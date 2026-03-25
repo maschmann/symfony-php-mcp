@@ -27,7 +27,7 @@ Repository = "https://github.com/maschmann/symfony-php-mcp"
 Issues = "https://github.com/maschmann/symfony-php-mcp/issues"
 
 [project.scripts]
-symfony-mcp = "symfony_mcp.server:main"
+symfony-php-mcp = "symfony_mcp.server:main"
 
 [project.optional-dependencies]
 dev = [

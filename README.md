@@ -533,7 +533,7 @@ cd symfony-php-mcp
 uv sync
 
 # Run the server (will block waiting for MCP stdio input)
-uv run symfony-mcp
+uv run symfony-php-mcp
 
 # Run tests
 uv run pytest
