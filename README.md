@@ -550,13 +550,33 @@ src/symfony_mcp/
 ├── server.py        # FastMCP server, lifespan, tool decorators, main()
 ├── config.py        # ServerConfig: env vars + .symfony-mcp.json merge logic
 ├── executor.py      # PhpExecutor: subprocess wrapper with Docker/wrapper support
+├── indexer.py       # SymbolIndex: PHP regex scanner + JSON persistence
 └── tools/
     ├── project.py   # get_project_overview
     ├── router.py    # find_route
     ├── twig.py      # analyze_twig
     ├── services.py  # list_services
-    └── code.py      # read_code_context
+    ├── code.py      # read_code_context
+    └── index.py     # build_index, find_symbol, search_code
 ```
+
+### Symbol index
+
+The index is stored at `<symfony-project>/.symfony-mcp-index.json`. Add it to the project's `.gitignore`:
+
+```
+# symfony-php-mcp symbol index
+.symfony-mcp-index.json
+```
+
+Typical workflow:
+```
+1. build_index                      — first time, or after major refactors
+2. find_symbol "UserController"     — get file + line number instantly
+3. read_code_context src/...php     — read the implementation
+```
+
+The index updates incrementally (only changed files are re-scanned), so calling `build_index` after saving a few files is fast.
 
 ### Adding a new tool
 
