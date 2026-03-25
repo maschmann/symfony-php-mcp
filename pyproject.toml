@@ -1,6 +1,6 @@
 [project]
 name = "symfony-php-mcp"
-version = "0.1.22"
+version = "0.1.3"
 description = "MCP server bridging Symfony/PHP projects with LLMs via Claude Desktop and other MCP clients"
 readme = "README.md"
 requires-python = ">=3.11"
